@@ -5,9 +5,8 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './lazy-image.component.html'
 })
 export class LazyImageComponent implements OnInit {
-
   @Input()
-  public url!: string;
+  public url!:string;
 
   @Input()
   public alt: string = '';
@@ -17,11 +16,14 @@ export class LazyImageComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if ( !this.url ) throw new Error('URL property is required');
+    if ( !this.url ) throw new Error('URL property is required!');
   }
 
   onLoad() {
-    this.hasLoaded = true;
+    setTimeout(() => {
+      this.hasLoaded = true
+    }, 1000);
+
   }
 
 
