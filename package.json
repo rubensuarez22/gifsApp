@@ -5,8 +5,15 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:href": "ng build --base-href ./",
+    "build:github": "npm run build:href && npm run reorder:dist && npm run delete:docs && npm run copy:dist",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "reorder:dist": "npm run copy:browsercontent && npm run delete:browser",
+    "copy:browsercontent": "copyfiles dist/gifs-app/browser/* dist/gifs-app -f",
+    "delete:browser": "del-cli dist/gifs-app/browser",
+    "copy:dist": "copyfiles dist/gifs-app/* ./docs -f",
+    "delete:docs": "del-cli docs"
   },
   "private": true,
   "dependencies": {
